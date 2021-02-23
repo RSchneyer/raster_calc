@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="index.js"></script>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Steffen's Rasterization Method Calculator</h1>
+        <table>
+            <tr>
+                <th>Point 0</th>
+                <th>Point 1</th>
+                <th>Point 2</th>
+                <th>Point P</th>
+            </tr>
+            <tr>
+                <td>
+                    <label for="x0">x0:</label>
+                    <input type="number" id="x0" name="x0" value=50>
+                </td>
+                <td>
+                    <label for="x1">x1:</label>
+                    <input type="number" id="x1" name="x1" value=100>
+                </td>
+                <td>
+                    <label for="x2">x2:</label>
+                    <input type="number" id="x2" name="x2" value=0>
+                </td>
+                <td>
+                    <label for="xp">xp:</label>
+                    <input type="number" id="xp" name="xp" value=50>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="y0">y0:</label>
+                    <input type="number" id="y0" name="y0" value=0>
+                </td>
+                <td>
+                    <label for="y1">y1:</label>
+                    <input type="number" id="y1" name="y1" value=100>
+                </td>
+                <td>
+                    <label for="y2">y2:</label>
+                    <input type="number" id="y2" name="y2" value=100>
+                </td>
+                <td>
+                    <label for="yp">yp:</label>
+                    <input type="number" id="yp" name="yp" value=50>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="r0">r0:</label>
+                    <input type="number" id="r0" name="r0" value=255>
+                </td>
+                <td>
+                    <label for="r1">r1:</label>
+                    <input type="number" id="r1" name="r1" value=0>
+                </td>
+                <td>
+                    <label for="r2">r2:</label>
+                    <input type="number" id="r2" name="r2" value=0>
+                </td>
+                <td>P_r: <span id="p_r">xxx</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="g0">g0:</label>
+                    <input type="number" id="g0" name="g0" value=0>
+                </td>
+                <td>
+                    <label for="g1">g1:</label>
+                    <input type="number" id="g1" name="g1" value=0>
+                </td>
+                <td>
+                    <label for="g2">g2:</label>
+                    <input type="number" id="g2" name="g2" value=255> 
+                </td>
+                <td>P_g: <span id="p_g">xxx</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="b0">b0:</label>
+                    <input type="number" id="b0" name="b0" value=0>
+                </td>
+                <td>
+                    <label for="b1">b1:</label>
+                    <input type="number" id="b1" name="b1" value=0>
+                </td>
+                <td>
+                    <label for="b2">b2:</label>
+                    <input type="number" id="b2" name="b2" value=255>
+                </td>
+                <td>P_b: <span id="p_b">xxx</span></td>
+            </tr>
+        </table>
+        <button id="calc" onclick="calc()">Calculate!</button>
+        <br><br>
+        <table>
+            <tr>        
+                <table>
+                    <tr>
+                        <td>C1: <span id="c1">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C2_r: <span id="c2_r">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C2_g <span id="c2_g">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C2_b: <span id="c2_b">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C3_r: <span id="c3_r">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C3_g: <span id="c3_g">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C3_b: <span id="c3_b">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C4: <span id="c4">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C5_r: <span id="c5_r">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C5_g: <span id="c5_g">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C5_b: <span id="c5_b">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C6_r: <span id="c6_r">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C6_g: <span id="c6_g">xxx</span></td>
+                    </tr>
+                    <tr>
+                        <td>C6_b: <span id="c6_b">xxx</span></td>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <table>
+                    <tr>A: <span id="a">xxx</span></tr>
+                </table>
+            </tr>
+        </table>
+
+    </body>
+</html>
