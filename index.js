@@ -99,8 +99,48 @@ function calc(){
     
     var ib = (a*a_p > 0);
     // document.getElementById("ib").innerHTML = ib;
-
-
+    var p0_data = {coords:[x0, y0], colors:[r0, g0, b0, 255]};
+    var p1_data = {coords:[x1, y1], colors:[r1, g1, b1, 255]};
+    var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]}
+    draw(p0_data, p1_data, p2_data);
 }
 
+function draw(p0Obj, p1Obj, p2Obj){
+    var canvas = document.getElementById("canvas");
+    var triangle = new Triangle(p0Obj.coords, p1Obj.coords, p2Obj.coords);
+    triangle[0].color = p0Obj.colors;
+    triangle[1].color = p1Obj.colors;
+    triangle[2].color = p2Obj.colors;
+    var triangleGradient = function(point) {
+        var DEFAULTCOLOR = [0, 0, 0, 0];
+        var ret = [0, 0, 0, 0];
 
+        for (var i = 0; i < 3; i++) {
+            var v1 = triangle.edges[i][0];
+            var v2 = triangle.edges[i][1];
+            var v3 = triangle[i];
+            var isect = intersectLines(v1, v2, v3, point);
+
+            if (isect) {
+                var pointVertexDist = distance(point, v3);
+                var isectVertexDist = distance(isect, v3);
+
+                if (pointVertexDist <= isectVertexDist) {
+                    var lerpFac = 1 - pointVertexDist /
+                        isectVertexDist;
+
+                    for (var j = 0; j < ret.length; j++) {
+                        ret[j] += v3.color[j] * lerpFac;
+                    }
+                } else {
+                    return DEFAULTCOLOR;
+                }
+            } else {
+                return DEFAULTCOLOR;
+            }
+        }
+
+        return ret;
+    }
+    process(canvas, triangleGradient);
+}
