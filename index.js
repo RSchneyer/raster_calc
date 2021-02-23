@@ -74,6 +74,11 @@ function calc(){
     document.getElementById("c6_g").innerHTML = c6_g;
     document.getElementById("c6_b").innerHTML = c6_b;
 
+    var c7 = (y0 - y1);
+    var c8 = (x0 - x1);
+    document.getElementById("c7").innerHTML = c7;
+    document.getElementById("c8").innerHTML = c8;
+
     var p_r = ((xp - x0)*c5_r) + ((yp - y0)*c6_r) + r0;
     var p_g = ((xp - x0)*c5_g) + ((yp - y0)*c6_g) + g0;
     var p_b = ((xp - x0)*c5_b) + ((yp - y0)*c6_b) + b0;
@@ -88,6 +93,12 @@ function calc(){
 
     var a = (((x0 - x2)*(y1 - y2)) - ((x1 - x2)*(y0 - y2)))/2;
     document.getElementById("a").innerHTML = a;
+
+    var a_p = (((x0 - xp)*(y1 - yp)) - ((x1 - x2)*(y0 - yp)))/2;
+    document.getElementById("a_p").innerHTML = a_p;
+    
+    var ib = (a*a_p > 0);
+    // document.getElementById("ib").innerHTML = ib;
 
 
 }
