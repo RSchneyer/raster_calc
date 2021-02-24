@@ -74,9 +74,13 @@ function calc(path){
     var a = (((x0 - x2)*(y1 - y2)) - ((x1 - x2)*(y0 - y2)))/2;
     document.getElementById("a").innerHTML = a;
 
-    
-    document.getElementById("ib").innerHTML = isInBounds({p0:[x0,y0],p1:[x1,y1],p2:[x2,y2]}, [xp, yp]);
-    findSubAreas({p0:[x0,y0],p1:[x1,y1],p2:[x2,y2]}, [xp,yp]);
+    var triObj = {p0:[x0,y0],p1:[x1,y1],p2:[x2,y2]};
+
+    document.getElementById("ib").innerHTML = isInBounds(triObj, [xp, yp]);
+
+    findSubAreas(triObj, [xp,yp]);
+    findC7sandC8s(triObj, [xp,yp]);
+
     var p0_data = {coords:[x0, y0], colors:[r0, g0, b0, 255]};
     var p1_data = {coords:[x1, y1], colors:[r1, g1, b1, 255]};
     var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]};
@@ -137,4 +141,21 @@ function findSubAreas(triangleObj, testPoint){
     document.getElementById("a_p0").innerHTML = ap0;
     document.getElementById("a_p1").innerHTML = ap1;
     document.getElementById("a_p2").innerHTML = ap2;
+}
+function findC7sandC8s(triangleObj, testPoint){
+    var C7_0 = triangleObj.p0[1] - triangleObj.p1[1];
+    var C7_1 = triangleObj.p1[1] - triangleObj.p2[1];
+    var C7_2 = triangleObj.p2[1] - triangleObj.p0[1];
+
+    document.getElementById("c7_0").innerHTML = C7_0;
+    document.getElementById("c7_1").innerHTML = C7_1;
+    document.getElementById("c7_2").innerHTML = C7_2;
+
+    var C8_0 = triangleObj.p1[0] - triangleObj.p0[0];
+    var C8_1 = triangleObj.p2[0] - triangleObj.p1[0];
+    var C8_2 = triangleObj.p0[0] - triangleObj.p2[0];
+
+    document.getElementById("c8_0").innerHTML = C8_0;
+    document.getElementById("c8_1").innerHTML = C8_1;
+    document.getElementById("c8_2").innerHTML = C8_2;
 }
