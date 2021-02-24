@@ -1,23 +1,3 @@
-
-
-// var c1   = ((x1 - x0)*(y2 - y0)) - ((y1 - y0)*(x2 - x0));
-
-// var c2_r = ((p1_r - p0_r)*(y2 - y0)) - ((y1 - y0)*(p2_r - p0_r));
-// var c2_g = ((p1_g - p0_g)*(y2 - y0)) - ((y1 - y0)*(p2_g - p0_g));
-// var c2_b = ((p1_b - p0_b)*(y2 - y0)) - ((y1 - y0)*(p2_b - p0_b));
-
-// var c3_r = ((x1 - x0)*(p2_r - p0_r)) - ((p1_r - p0_r)*(x2 - x0));
-// var c3_g = ((x1 - x0)*(p2_g - p0_g)) - ((p1_g - p0_g)*(x2 - x0));
-// var c3_b = ((x1 - x0)*(p2_b - p0_b)) - ((p1_b - p0_b)*(x2 - x0));
-
-// var c4 = 1/c1;
-
-// var c5 = c2 * c4;
-// var c6 = c3 * c4;
-
-
-
-
 function calc(path){
     var x0 = parseFloat(document.getElementById("x0").value);
     var y0 = parseFloat(document.getElementById("y0").value);
@@ -94,10 +74,9 @@ function calc(path){
     var a = (((x0 - x2)*(y1 - y2)) - ((x1 - x2)*(y0 - y2)))/2;
     document.getElementById("a").innerHTML = a;
 
-    var a_p = (((x0 - xp)*(y1 - yp)) - ((x1 - xp)*(y0 - yp)))/2;
-    document.getElementById("a_p").innerHTML = a_p;
     
     document.getElementById("ib").innerHTML = isInBounds({p0:[x0,y0],p1:[x1,y1],p2:[x2,y2]}, [xp, yp]);
+    findSubAreas({p0:[x0,y0],p1:[x1,y1],p2:[x2,y2]}, [xp,yp]);
     var p0_data = {coords:[x0, y0], colors:[r0, g0, b0, 255]};
     var p1_data = {coords:[x1, y1], colors:[r1, g1, b1, 255]};
     var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]};
@@ -150,3 +129,12 @@ function draw(drawP, p0Obj, p1Obj, p2Obj, pObj){
     }
 }
 
+function findSubAreas(triangleObj, testPoint){
+    var ap0 = areaFromPoints(triangleObj.p0, triangleObj.p1, testPoint);
+    var ap1 = areaFromPoints(triangleObj.p1,triangleObj.p2,testPoint);
+    var ap2 = areaFromPoints(triangleObj.p2,triangleObj.p0,testPoint);
+
+    document.getElementById("a_p0").innerHTML = ap0;
+    document.getElementById("a_p1").innerHTML = ap1;
+    document.getElementById("a_p2").innerHTML = ap2;
+}

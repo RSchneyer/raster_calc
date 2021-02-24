@@ -109,10 +109,13 @@ function lineTo(ctx, coords){ctx.lineTo(coords[0],coords[1]);}
 
 function isInBounds(triangleObj, checkPoint){
     var countOnBounds = document.getElementById("edgePoint").checked;
+
     var a = areaFromPoints(triangleObj.p0,triangleObj.p1,triangleObj.p2);
+
     var ap1 = areaFromPoints(triangleObj.p0,triangleObj.p1,checkPoint);
     var ap2 = areaFromPoints(triangleObj.p1,triangleObj.p2,checkPoint);
     var ap3 = areaFromPoints(triangleObj.p2,triangleObj.p0,checkPoint);
+
     if(!countOnBounds){
         return ((a * ap1 >= 0) && (a * ap2 >= 0) && (a * ap3 >= 0));
     }
@@ -120,7 +123,6 @@ function isInBounds(triangleObj, checkPoint){
         return ((a * ap1 > 0) && (a * ap2 > 0) && (a * ap3 > 0));
     }
 }
-
 
 function areaFromPoints([x0, y0],[x1, y1],[x2, y2]){
     return (((x0 - x2) * (y1 - y2)) - ((x1 - x2) * (y0 - y2)))/2;
