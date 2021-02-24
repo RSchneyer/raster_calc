@@ -1,5 +1,5 @@
 // From: http://www.nixtu.info/2010/08/html5-canvas-gradients-triangle.html
-function process(canvas, func) {
+function process(canvas, func, pObj) {
     function setPixel(imageData, x, y, rgba) {
         var index = (x + y * imageData.width) * 4;
 
@@ -19,6 +19,6 @@ function process(canvas, func) {
             setPixel(imageData, x, y, result);
         }
     }
-
+    setPixel(imageData, pObj.coords[0], pObj.coords[1], [255,255,255,255]);
     ctx.putImageData(imageData, 0, 0);
 }

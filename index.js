@@ -94,18 +94,19 @@ function calc(){
     var a = (((x0 - x2)*(y1 - y2)) - ((x1 - x2)*(y0 - y2)))/2;
     document.getElementById("a").innerHTML = a;
 
-    var a_p = (((x0 - xp)*(y1 - yp)) - ((x1 - x2)*(y0 - yp)))/2;
+    var a_p = (((x0 - xp)*(y1 - yp)) - ((x1 - xp)*(y0 - yp)))/2;
     document.getElementById("a_p").innerHTML = a_p;
     
     var ib = (a*a_p > 0);
     // document.getElementById("ib").innerHTML = ib;
     var p0_data = {coords:[x0, y0], colors:[r0, g0, b0, 255]};
     var p1_data = {coords:[x1, y1], colors:[r1, g1, b1, 255]};
-    var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]}
-    draw(p0_data, p1_data, p2_data);
+    var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]};
+    var p_data  = {coords:[xp, yp]};
+    draw(p0_data, p1_data, p2_data, p_data);
 }
 
-function draw(p0Obj, p1Obj, p2Obj){
+function draw(p0Obj, p1Obj, p2Obj, pObj){
     var canvas = document.getElementById("canvas");
     var triangle = new Triangle(p0Obj.coords, p1Obj.coords, p2Obj.coords);
     triangle[0].color = p0Obj.colors;
@@ -142,5 +143,5 @@ function draw(p0Obj, p1Obj, p2Obj){
 
         return ret;
     }
-    process(canvas, triangleGradient);
+    process(canvas, triangleGradient, pObj);
 }
