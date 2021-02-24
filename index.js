@@ -18,7 +18,7 @@
 
 
 
-function calc(){
+function calc(path){
     var x0 = parseFloat(document.getElementById("x0").value);
     var y0 = parseFloat(document.getElementById("y0").value);
     var r0 = parseFloat(document.getElementById("r0").value);
@@ -103,12 +103,12 @@ function calc(){
     var p1_data = {coords:[x1, y1], colors:[r1, g1, b1, 255]};
     var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]};
     var p_data  = {coords:[xp, yp]};
-    draw(p0_data, p1_data, p2_data, p_data);
+    draw(path, p0_data, p1_data, p2_data, p_data);
 }
 function toFixedPoint(data){
     return Math.floor(Math.round(data * Math.pow(2, 16))).toString(2); 
 }
-function draw(p0Obj, p1Obj, p2Obj, pObj){
+function draw(drawP, p0Obj, p1Obj, p2Obj, pObj){
     var canvas = document.getElementById("canvas");
     var triangle = new Triangle(p0Obj.coords, p1Obj.coords, p2Obj.coords);
     triangle[0].color = p0Obj.colors;
@@ -146,6 +146,8 @@ function draw(p0Obj, p1Obj, p2Obj, pObj){
         return ret;
     }
     process(canvas, triangleGradient, pObj);
-    // drawPath({p0:p0Obj.coords, p1:p1Obj.coords, p2:p2Obj.coords});
+    if(drawP){
+        drawPath({p0:p0Obj.coords, p1:p1Obj.coords, p2:p2Obj.coords});
+    }
 }
 

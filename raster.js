@@ -26,38 +26,38 @@ function drawPath(triangleObj){
     var prev_state;
     console.log(isInBounds(triangleObj, currentCoords));
     while(currentCoords[1]<triangleObj.p2[1]){
-        console.log(currentCoords)
+        // console.log(currentCoords)
         console.log(state);
+        console.log("moving to: ("+currentCoords[0]+","+currentCoords[1]+")");
         ctx.moveTo(currentCoords[0], currentCoords[1]);
-        ctx.lineTo(currentCoords[0], currentCoords[1]);
-        ctx.stroke();
             if(state.localeCompare("MOVE_RIGHT_CMD")==0){
-                ctx.moveTo(currentCoords[0], currentCoords[1]);
+                
                 while(isInBounds(triangleObj, currentCoords)){
                     currentCoords[0]++;
-                    ctx.lineTo(currentCoords[0], currentCoords[1]);
-                    ctx.stroke();
                 }
+
                 currentCoords = pointer;
                 pointer = null;
                 state = "POP_MOVE_LEFT_CMD";
                 prev_state = "MOVE_RIGHT_COMMAND";
             }
+
             else if(state.localeCompare("POP_MOVE_LEFT_CMD")==0){
-                ctx.moveTo(currentCoords[0], currentCoords[1]);
+                // ctx.moveTo(currentCoords[0], currentCoords[1]);
                 while(isInBounds(triangleObj, currentCoords)){
                     currentCoords[0]--;
-                    ctx.lineTo(currentCoords[0], currentCoords[1]);
-                    ctx.stroke();
                 }
+                // ctx.lineTo(currentCoords[0], currentCoords[1]);
+                // ctx.stroke();
                 state = "PUSH_MOVE_DOWN_CMD";
                 prev_state = "POP_MOVE_LEFT_CMD";
             }
+
             else if(state.localeCompare("PUSH_MOVE_DOWN_CMD")==0){
-                ctx.moveTo(currentCoords[0], currentCoords[1]);
+                // ctx.moveTo(currentCoords[0], currentCoords[1]);
                 currentCoords[1]++;
                 // ctx.lineTo(currentCoords[0], currentCoords[1]);
-                ctx.stroke();
+                // ctx.stroke();
                 if(isInBounds(triangleObj, currentCoords)){
                     pointer = currentCoords;
                     state = "MOVE_RIGHT_CMD";
@@ -70,27 +70,32 @@ function drawPath(triangleObj){
                 }
                 prev_state = "PUSH_MOVE_DOWN_CMD";
             }
+
             else if(state.localeCompare("MOVE_LEFT_CMD")==0){
-                ctx.moveTo(currentCoords[0], currentCoords[1]);
+                // ctx.moveTo(currentCoords[0], currentCoords[1]);
                 while(!isInBounds(triangleObj, currentCoords)){
                     currentCoords[0]--;
-                    // ctx.lineTo(currentCoords[0], currentCoords[1]);
-                    ctx.stroke();
                 }
+                // ctx.lineTo(currentCoords[0], currentCoords[1]);
+                // ctx.stroke();
                 state = "POP_MOVE_LEFT_CMD";
                 prev_state = "MOVE_LEFT_CMD";
                 break;
             }
+
             else if(state.localeCompare("POP_MOVE_RIGHT_CMD")==0){
-                ctx.moveTo(currentCoords[0], currentCoords[1]);
+                // ctx.moveTo(currentCoords[0], currentCoords[1]);
                 while(isInBounds(triangleObj, currentCoords)){
                     currentCoords[0]++;
-                    // ctx.lineTo(currentCoords[0], currentCoords[1]);
-                    ctx.stroke();
                 }
+                // ctx.lineTo(currentCoords[0], currentCoords[1]);
+                // ctx.stroke();
                 state = "PUSH_MOVE_DOWN_CMD";
                 prev_state = "POP_MOVE_RIGHT_CMD";
             }
+            console.log("line to: ("+currentCoords[0]+","+currentCoords[1]+")");
+            ctx.lineTo(currentCoords[0], currentCoords[1]);
+            ctx.stroke();
     }
     ctx.stroke();
 }
