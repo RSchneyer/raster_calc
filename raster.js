@@ -108,11 +108,17 @@ function drawPath(triangleObj){
 function lineTo(ctx, coords){ctx.lineTo(coords[0],coords[1]);}
 
 function isInBounds(triangleObj, checkPoint){
+    var countOnBounds = document.getElementById("edgePoint").checked;
     var a = areaFromPoints(triangleObj.p0,triangleObj.p1,triangleObj.p2);
     var ap1 = areaFromPoints(triangleObj.p0,triangleObj.p1,checkPoint);
     var ap2 = areaFromPoints(triangleObj.p1,triangleObj.p2,checkPoint);
     var ap3 = areaFromPoints(triangleObj.p2,triangleObj.p0,checkPoint);
-    return ((a * ap1 >= 0) && (a * ap2 >= 0) && (a * ap3 >= 0));
+    if(!countOnBounds){
+        return ((a * ap1 >= 0) && (a * ap2 >= 0) && (a * ap3 >= 0));
+    }
+    else{
+        return ((a * ap1 > 0) && (a * ap2 > 0) && (a * ap3 > 0));
+    }
 }
 
 
