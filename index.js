@@ -97,8 +97,7 @@ function calc(path){
     var a_p = (((x0 - xp)*(y1 - yp)) - ((x1 - xp)*(y0 - yp)))/2;
     document.getElementById("a_p").innerHTML = a_p;
     
-    var ib = (a*a_p > 0);
-    // document.getElementById("ib").innerHTML = ib;
+    document.getElementById("ib").innerHTML = isInBounds({p0:[x0,y0],p1:[x1,y1],p2:[x2,y2]}, [xp, yp]);
     var p0_data = {coords:[x0, y0], colors:[r0, g0, b0, 255]};
     var p1_data = {coords:[x1, y1], colors:[r1, g1, b1, 255]};
     var p2_data = {coords:[x2, y2], colors:[r2, g2, b2, 255]};
