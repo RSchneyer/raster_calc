@@ -105,7 +105,9 @@ function calc(){
     var p_data  = {coords:[xp, yp]};
     draw(p0_data, p1_data, p2_data, p_data);
 }
-
+function toFixedPoint(data){
+    return Math.floor(Math.round(data * Math.pow(2, 16))).toString(2); 
+}
 function draw(p0Obj, p1Obj, p2Obj, pObj){
     var canvas = document.getElementById("canvas");
     var triangle = new Triangle(p0Obj.coords, p1Obj.coords, p2Obj.coords);
@@ -144,4 +146,6 @@ function draw(p0Obj, p1Obj, p2Obj, pObj){
         return ret;
     }
     process(canvas, triangleGradient, pObj);
+    // drawPath({p0:p0Obj.coords, p1:p1Obj.coords, p2:p2Obj.coords});
 }
+
