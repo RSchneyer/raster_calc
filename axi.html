@@ -5,6 +5,7 @@
 <body>
     <h1>AXI Data Calculator</h1>
     <a href="index.html">Main Calc</a><br>
+        <p>Color input scale: 0 to 255</p>
         <label for="r">R val</label>
         <input type="number" id="r" name="r" value=255><br>
         <label for="g">G val</label>
@@ -14,14 +15,15 @@
         <label for="a">A val</label>
         <input type="number" id="a" name="a" value=1><br>
         <br>
-        <label for="w">W val</label>
-        <input type="number" id="w" name="w" value=0><br>
+        <p>Position input scale: -1.0 to 1.0</p>
         <label for="x">X val</label>
-        <input type="number" id="x" name="x" value=50><br>
+        <input type="number" id="x" name="x" value=.75><br>
         <label for="y">Y val</label>
-        <input type="number" id="y" name="y" value=100><br>
+        <input type="number" id="y" name="y" value=-1><br>
         <label for="z">Z val</label>
         <input type="number" id="z" name="z" value=0><br>
+        <label for="w">W val</label>
+        <input type="number" id="w" name="w" value=1><br>
         <br>
         <button onclick="assembleData()">Generate</button>
     <br>
@@ -31,5 +33,6 @@
         <div>Color Hex: <span id="color_hex">xxx</span></div>
         <div>Position Hex: <span id="pos_hex">xxx</span></div><br>
         <div>AXI Data Hex: <span id='axi'>xxx</span></div>
+        <div>AXI Data Hex (slightly)Readable: <span id='axi_readable'>xx_xx</span></div>
     </div>
 </body>
