@@ -42,7 +42,7 @@ function assembleColor(colorData){
     var hex_arr = [a_hex,b_hex,g_hex,r_hex];
     hex_arr.forEach(function(val){
         console.log(val);
-        retstring += val;
+        retstring += "_"+val;
     });
     console.log(retstring);
     return retstring;
@@ -58,7 +58,7 @@ function assemblePosition(posData){
     var hex_arr = [w_hex,z_hex,y_hex,x_hex];
     hex_arr.forEach(function(val){
         console.log(val);
-        retstring += val;
+        retstring += "_"+val;
     });
     return retstring;
 }
