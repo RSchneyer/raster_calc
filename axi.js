@@ -75,7 +75,7 @@ function convertColor(color){
 function converPosition(pos){
     var floatVal = parseFloat(pos);
     var hex_int = toInt16(Math.floor(floatVal)).toString(16);
-    var hex_dec = Math.floor(((floatVal % 1) * 65536)).toString(16);
+    var hex_dec = Math.floor(((Math.abs(floatVal) % 1) * 65536)).toString(16);
     var hex_q16_16 = hex_int.padStart(4,"0") + hex_dec.padStart(4,"0");
     console.log(hex_q16_16);
     return hex_q16_16;
