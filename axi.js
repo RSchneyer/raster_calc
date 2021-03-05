@@ -36,8 +36,8 @@ function assembleData(){
     document.getElementById("rast_color_hex").innerHTML = "0x" + assembleColor(colorData, true);
     document.getElementById("rast_pos_hex").innerHTML = "0x" + assemblePosition(rastPosData, true);
 
-    document.getElementById("rast_axi").innerHTML = "0x" + assembleTexture() + assembleNormal() + assembleColor(colorData) + assemblePosition(posData);
-    document.getElementById("rast_axi_readable").innerHTML = "0x" + assembleTexture(true) + "__" + assembleNormal(true) + "__" + assembleColor(colorData, true) + "__" + assemblePosition(posData, true);
+    document.getElementById("rast_axi").innerHTML = "0x" + assembleTexture() + assembleNormal() + assembleColor(colorData) + assemblePosition(rastPosData);
+    document.getElementById("rast_axi_readable").innerHTML = "0x" + assembleTexture(true) + "__" + assembleNormal(true) + "__" + assembleColor(colorData, true) + "__" + assemblePosition(rastPosData, true);
 }
 
 function assembleTexture(pretty){
