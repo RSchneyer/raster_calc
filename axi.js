@@ -14,10 +14,16 @@ function assembleData(){
         document.getElementById('y').value,
         document.getElementById('z').value
     ];
+    var viewportSizeData = [
+        document.getElementById('xmin').value,
+        document.getElementById('xmax').value,
+        document.getElementById('ymin').value,
+        document.getElementById('ymax').value
+    ];
     var rastPosData = [
         document.getElementById('w').value,
-        viewportX(document.getElementById('x').value),
-        viewportY(document.getElementById('y').value),
+        viewportX(document.getElementById('x').value, viewportSizeData),
+        viewportY(document.getElementById('y').value, viewportSizeData),
         document.getElementById('z').value
     ];
 
@@ -29,8 +35,8 @@ function assembleData(){
     document.getElementById("vp_axi").innerHTML = "0x" + assembleTexture() + assembleNormal() + assembleColor(colorData) + assemblePosition(posData);
     document.getElementById("vp_axi_readable").innerHTML = "0x" + assembleTexture(true) + "__" + assembleNormal(true) + "__" + assembleColor(colorData, true) + "__" + assemblePosition(posData, true);
 
-    document.getElementById("rast_x").innerHTML = viewportX(document.getElementById('x').value);
-    document.getElementById("rast_y").innerHTML = viewportY(document.getElementById('y').value);
+    document.getElementById("rast_x").innerHTML = rastPosData[1];
+    document.getElementById("rast_y").innerHTML = rastPosData[2];
     document.getElementById("rast_text_hex").innerHTML = "0x" + assembleTexture(true);
     document.getElementById("rast_norm_hex").innerHTML = "0x" + assembleNormal(true);
     document.getElementById("rast_color_hex").innerHTML = "0x" + assembleColor(colorData, true);
@@ -123,12 +129,12 @@ function converPosition(pos){
     return hex_q16_16.padStart(8, "0");
 }
 
-function viewportX(x){
-    return (1920/2 * (parseFloat(x)+1)+0).toString();
+function viewportX(x, viewportData){
+    return (parseFloat(viewportData[1])/2 * (parseFloat(x)+1)+parseFloat(viewportData[0])).toString();
 }
 
-function viewportY(y){
-    return (1080/2 * (parseFloat(y)+1)+0).toString();
+function viewportY(y, viewportData){
+    return (parseFloat(viewportData[3])/2 * (parseFloat(y)+1)+parseFloat(viewportData[2])).toString();
 }
 
 // to deal with two's compliment
