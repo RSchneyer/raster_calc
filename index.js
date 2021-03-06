@@ -159,3 +159,7 @@ function findC7sandC8s(triangleObj, testPoint){
     document.getElementById("c8_1").innerHTML = C8_1;
     document.getElementById("c8_2").innerHTML = C8_2;
 }
+function funmode(){
+    console.log(document.getElementById("bod"));
+    document.getElementById("bod").style = "font-family:Comic Mono;";
+}

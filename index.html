@@ -39,7 +39,7 @@
             }
         </style>
     </head>
-    <body style="font-family:Comic Mono;">
+    <body style="font-family: monospace;" id="bod">
         <script src="https://unpkg.com/github-corners@latest/dist/embed.min.js" data-href="https://github.com/RSchneyer/raster_calc" data-target="_blank" data-label="Check out the GitHub Corners repository!"></script>
         <h1>Steffen's Rasterization Method Calculator</h1>
         <h2><del>(EXTREMELY UNTESTED)</del> SOMEWHAT TESTED AND INSTRUCTOR APPROVED</h2>
@@ -139,6 +139,7 @@
         </form>
         <button id="calc" onclick="calc(false)">Calculate!</button>
         <button id="drawpath" onclick="calc(true)">Draw Path (broken?)</button>
+        <button id="fun_mode" onclick="funmode()">Fun Mode</button> 
         <br><br>
 
         <div class="row">

@@ -4,8 +4,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
     <link rel="icon" type="image/png" href="favicon.png"/>
     <script src="axi.js"></script>
+    <script src="index.js"></script>
 </head>
-<body style="font-family:Comic Mono;">
+<body style="font-family: monospace;" id="bod">
     <h1>AXI Data Calculator</h1>
     <a href="index.html">Main Calc</a><br>
     <table>
@@ -68,6 +69,7 @@
     </table>
     <br>
     <button onclick="assembleData()">Generate</button>
+    <button id="fun_mode" onclick="funmode()">Fun Mode</button> 
     <br><br>
     <div>
         <H3>Input to Viewport</H2>
