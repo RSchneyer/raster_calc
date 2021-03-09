@@ -1,24 +1,50 @@
 function calc(path){
-    var x0 = parseFloat(document.getElementById("x0").value);
-    var y0 = parseFloat(document.getElementById("y0").value);
-    var r0 = parseFloat(document.getElementById("r0").value);
-    var g0 = parseFloat(document.getElementById("g0").value);
-    var b0 = parseFloat(document.getElementById("b0").value);
+    var inputFormat = document.getElementById("inputFormat").checked;
+    var x0, y0, r0, g0, b0;
+    var x1, y1, r1, g1, b1;
+    var x2, y2, r2, g2, b2;
+    var xp, yp;
+    if(!inputFormat){
+        x0 = parseFloat(document.getElementById("x0").value);
+        y0 = parseFloat(document.getElementById("y0").value);
+        r0 = parseFloat(document.getElementById("r0").value);
+        g0 = parseFloat(document.getElementById("g0").value);
+        b0 = parseFloat(document.getElementById("b0").value);
 
-    var x1 = parseFloat(document.getElementById("x1").value);
-    var y1 = parseFloat(document.getElementById("y1").value);
-    var r1 = parseFloat(document.getElementById("r1").value);
-    var g1 = parseFloat(document.getElementById("g1").value);
-    var b1 = parseFloat(document.getElementById("b1").value);
+        x1 = parseFloat(document.getElementById("x1").value);
+        y1 = parseFloat(document.getElementById("y1").value);
+        r1 = parseFloat(document.getElementById("r1").value);
+        g1 = parseFloat(document.getElementById("g1").value);
+        b1 = parseFloat(document.getElementById("b1").value);
 
-    var x2 = parseFloat(document.getElementById("x2").value);
-    var y2 = parseFloat(document.getElementById("y2").value);
-    var r2 = parseFloat(document.getElementById("r2").value);
-    var g2 = parseFloat(document.getElementById("g2").value);
-    var b2 = parseFloat(document.getElementById("b2").value);
+        x2 = parseFloat(document.getElementById("x2").value);
+        y2 = parseFloat(document.getElementById("y2").value);
+        r2 = parseFloat(document.getElementById("r2").value);
+        g2 = parseFloat(document.getElementById("g2").value);
+        b2 = parseFloat(document.getElementById("b2").value);
 
-    var xp = parseFloat(document.getElementById("xp").value);
-    var yp = parseFloat(document.getElementById("yp").value);
+        xp = parseFloat(document.getElementById("xp").value);
+        yp = parseFloat(document.getElementById("yp").value);
+    }
+    else{
+        x0 = viewportTransform(parseFloat(document.getElementById("x0").value), 1000);
+        y0 = viewportTransform(parseFloat(document.getElementById("y0").value), 1000);
+        r0 = decToRGB(parseFloat(document.getElementById("r0").value));
+        g0 = decToRGB(parseFloat(document.getElementById("g0").value));
+        b0 = decToRGB(parseFloat(document.getElementById("b0").value));
+        x1 = viewportTransform(parseFloat(document.getElementById("x1").value),1000);
+        y1 = viewportTransform(parseFloat(document.getElementById("y1").value),1000);
+        r1 = decToRGB(parseFloat(document.getElementById("r1").value));
+        g1 = decToRGB(parseFloat(document.getElementById("g1").value));
+        b1 = decToRGB(parseFloat(document.getElementById("b1").value));
+        x2 = viewportTransform(parseFloat(document.getElementById("x2").value),1000);
+        y2 = viewportTransform(parseFloat(document.getElementById("y2").value),1000);
+        r2 = decToRGB(parseFloat(document.getElementById("r2").value));
+        g2 = decToRGB(parseFloat(document.getElementById("g2").value));
+        b2 = decToRGB(parseFloat(document.getElementById("b2").value));
+        xp = viewportTransform(parseFloat(document.getElementById("xp").value),1000);
+        yp = viewportTransform(parseFloat(document.getElementById("yp").value),1000);
+    }
 
     var c1   = ((x1 - x0)*(y2 - y0)) - ((y1 - y0)*(x2 - x0));
     document.getElementById("c1").innerHTML = c1;
@@ -162,4 +188,10 @@ function findC7sandC8s(triangleObj, testPoint){
 function funmode(){
     console.log(document.getElementById("bod"));
     document.getElementById("bod").style = "font-family:Comic Mono;";
+}
+function decToRGB(val){
+    return val*255;
+}
+function viewportTransform(val, heightOrWidth){
+    return (heightOrWidth/2) * (val + 1);
 }
