@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>SGP Assembly Instruction Decoder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
+    <script type="text/javascript" src="asm.js"></script>
+</head>
+<body style="font-family: monospace;" id="bod">
+    <h1>SGP Assembly Instruction Decoder</h1>
+    <form>
+        <label for="hex_instr">Instruction (hex)</label>
+        <span>0x</span><input type="text" name="hex_instr" id="hex_instr">
+    </form>
+    <button onclick="decodeInstruction()">Decode Instruction</button>
+    <div>
+        <span>Instruction mnemonic: <span id="mnemonic">xxx</span></span>
+        <br>
+        <span>Instruction description: <span id="desc">xxx</span></span>
+        <br>
+        <span>Psuedocode: <span id="psuedo">xxx</span></span>
+        <br>
+        <span>Instruction: <span id="instr_str">xxx</span></span>
+        <br>
+        <span>Binary: <span id="bin_rep">xxxx</span></span>
+    </div>
+</body>
