@@ -46,7 +46,7 @@ var DOESNT_USE_ALL_3 = ["nop",
                         "done"];
 
 function decodeInstruction(){
-    var instrHex = document.getElementById("hex_instr").value;
+    var instrHex = document.getElementById("hex_instr").value.toUpperCase();
     if(instrHex.slice(0,2)==="0x"){
         instrHex = instrHex.slice(2);
     }
