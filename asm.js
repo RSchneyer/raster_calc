@@ -47,8 +47,9 @@ var DOESNT_USE_ALL_3 = ["nop",
 
 function decodeInstruction(){
     var instrHex = document.getElementById("hex_instr").value.toUpperCase();
-    if(instrHex.slice(0,2)==="0x"){
+    if(instrHex.slice(0,2)==="0X"){
         instrHex = instrHex.slice(2);
+        document.getElementById("hex_instr").value = instrHex;
     }
     console.log(instrHex);
     var instrBin = hex2bin(instrHex,32);
