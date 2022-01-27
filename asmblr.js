@@ -87,7 +87,6 @@ function assembleInstruction(){
 function dec2bin(dec){
     var bin_arr = (dec>>>0).toString(2).padStart(8,'0').split("") // array of 8 strings
     bin_arr.splice(4,0," "); // insert a space after 4 elemnts
-    bin_arr.join('')
     return bin_arr.join('');
 }
 function is_insert(instr){ return instr.arg_count == 4; }
