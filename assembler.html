@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>SGP ISA Assembler</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
+    <script type="text/javascript" src="asmblr.js"></script>
+</head>
+<body style="font-family: monospace;" id="bod">
+    <script src="https://unpkg.com/github-corners@latest/dist/embed.min.js" data-href="https://github.com/RSchneyer/raster_calc" data-target="_blank" data-label="Check out the GitHub Corners repository!"></script>
+    <h1>SGP ISA Assembler</h1>
+    <a href="index.html">Raster Calc</a><br>
+    <form>
+        <label for="hex_instr">Instruction to assemble</label>
+        <span></span><input type="text" name="instr" id="instr">
+    </form>
+    <button onclick="assembleInstruction()">Assemble Instruction</button>
+    <div>
+        <span><b>Hex:</b> <span id="instr_hex">xxx</span></span>
+        <br>
+        <span><b>Binary:</b> <span id="instr_bin">xxxx</span></span>
+    </div>
+</body>
